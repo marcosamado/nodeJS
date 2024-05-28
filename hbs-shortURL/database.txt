@@ -1,0 +1,6 @@
+user: MarcosAmadoDev
+pass: marcasoxD
+
+
+
+mongodb+srv://MarcosAmadoDev:<password>@cluster0.y9zfxjo.mongodb.net/
