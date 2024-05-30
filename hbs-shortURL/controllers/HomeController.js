@@ -1,21 +1,35 @@
 const Url = require("../models/Url");
+const { nanoid } = require("nanoid");
 
 const leerUrls = async (req, res) => {
-    const urls = [
-        { origin: "www.google.com.ar1", shortURL: "asdasd1" },
-        { origin: "www.google.com.ar2", shortURL: "asdasd2" },
-        { origin: "www.google.com.ar3", shortURL: "asdasd3" },
-    ];
-    res.render("home", { urls, urls });
+    try {
+        const urls = await Url.find().lean();
+        res.render("home", { urls: urls });
+    } catch (error) {
+        console.log(error);
+        res.send("fallo algo al cargar las urls");
+    }
 };
 
 const agregarUrl = async (req, res) => {
+    const { origin } = req.body;
+
     try {
-        const url = new Url({
-            origin: "estatico",
-        });
+        const url = new Url({ origin: origin, shortURL: nanoid(6) });
         console.log(url);
-        res.send(url);
+        await url.save();
+        res.redirect("/");
+    } catch (error) {
+        console.log(error);
+        res.send("Error , algo fallo");
+    }
+};
+
+const eliminarUrl = async (req, res) => {
+    const { id } = req.params;
+    try {
+        await Url.findByIdAndDelete(id);
+        res.redirect("/");
     } catch (error) {
         console.log(error);
         res.send("Error , algo fallo");
@@ -25,4 +39,5 @@ const agregarUrl = async (req, res) => {
 module.exports = {
     leerUrls,
     agregarUrl,
+    eliminarUrl,
 };
