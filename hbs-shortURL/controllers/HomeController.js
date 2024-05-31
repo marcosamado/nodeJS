@@ -36,8 +36,20 @@ const eliminarUrl = async (req, res) => {
     }
 };
 
+const editarUrl = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const url = await Url.findById(id).lean();
+        console.log(url);
+        res.render("home", { url });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     leerUrls,
     agregarUrl,
     eliminarUrl,
+    editarUrl,
 };
