@@ -36,7 +36,7 @@ const eliminarUrl = async (req, res) => {
     }
 };
 
-const editarUrl = async (req, res) => {
+const editarUrlForm = async (req, res) => {
     const { id } = req.params;
     try {
         const url = await Url.findById(id).lean();
@@ -47,9 +47,21 @@ const editarUrl = async (req, res) => {
     }
 };
 
+const editarUrl = async (req, res) => {
+    const { id } = req.params;
+    const { origin } = req.body;
+    try {
+        await Url.findByIdAndUpdate(id, { origin: origin });
+        res.redirect("/");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     leerUrls,
     agregarUrl,
     eliminarUrl,
+    editarUrlForm,
     editarUrl,
 };

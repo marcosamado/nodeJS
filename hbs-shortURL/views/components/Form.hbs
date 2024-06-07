@@ -1,4 +1,12 @@
-<form action="/" method="POST">
-    <input type="text" placeholder="Ingrese url" name="origin" class="form-control my-2">
-    <button type="submit" class="btn btn-primary w-100 mb-2">Agregar URL</button>
+{{#if url}}
+    <form action="/editar/{{url._id}}" method="POST">
+    <input type="text" placeholder="Ingrese url" name="origin" value={{url.origin}} class="form-control my-2">
+    <button type="submit" class="btn btn-warning w-100 mb-2">EditarL</button>
 </form>
+
+    {{else}}    
+        <form action="/" method="POST">
+        <input type="text" placeholder="Ingrese url" name="origin" class="form-control my-2">
+        <button type="submit" class="btn btn-primary w-100 mb-2">Agregar URL</button>
+    </form>
+{{/if}}
