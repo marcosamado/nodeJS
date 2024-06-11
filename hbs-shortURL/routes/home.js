@@ -5,6 +5,7 @@ const {
     eliminarUrl,
     editarUrlForm,
     editarUrl,
+    redireccionamiento,
 } = require("../controllers/HomeController");
 const validarUrl = require("../middlewares/validarUrl");
 
@@ -15,5 +16,5 @@ router.post("/", validarUrl, agregarUrl);
 router.get("/eliminar/:id", eliminarUrl);
 router.get("/editar/:id", editarUrlForm);
 router.post("/editar/:id", validarUrl, editarUrl);
-
+router.get("/:shortURL", redireccionamiento);
 module.exports = router;
