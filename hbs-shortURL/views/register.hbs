@@ -1,22 +1,33 @@
-<h1>Registra tu usuario</h1>
-
-<form action="/auth/register" method="POST">
-<input
-    type="text"
-    class="form-control mb-2"
-    name="userName"
-    placeholder="Ingrese nombre"
-    value="marcos">
-<input
-    type="text"
-    class="form-control mb-2"
-    name="email"
-    placeholder="Ingrese email"
-    value="marcos@hotmail.com">
-<input
-    type="password"
-    class="form-control mb-2"
-    name="password"
-    placeholder="Ingrese contraseña"
-    value="123123">
-</form>
+<h1 class="text-center mt-2
+">Registra tu usuario</h1>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form action="/auth/register" method="POST">
+        <input
+            type="text"
+            class="form-control mb-2"
+            name="userName"
+            placeholder="Ingrese nombre"
+            value="marcos">
+        <input
+            type="text"
+            class="form-control mb-2"
+            name="email"
+            placeholder="Ingrese email"
+            value="marcos@hotmail.com">
+        <input
+            type="password"
+            class="form-control mb-2"
+            name="password"
+            placeholder="Ingrese contraseña"
+            value="123123">
+        <input
+            type="password"
+            class="form-control mb-2"
+            name="repassword"
+            placeholder="repita contraseña"
+            value="123123">
+            <button class="btn btn-primary" type="submit">Registrar Usuario</button>
+        </form>
+    </div>
+</div>
