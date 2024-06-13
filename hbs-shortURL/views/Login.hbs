@@ -1,1 +1,22 @@
-<h1>Login</h1>
+<h1 class="text-center mt-2
+">Login de usuario</h1>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form action="/auth/login" method="POST">
+        
+        <input
+            type="text"
+            class="form-control mb-2"
+            name="email"
+            placeholder="Ingrese email"
+            value="marcos@hotmail.com">
+        <input
+            type="password"
+            class="form-control mb-2"
+            name="password"
+            placeholder="Ingrese contraseña"
+            value="123123">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+</div>
