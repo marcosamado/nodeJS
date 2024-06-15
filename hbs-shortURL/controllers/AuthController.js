@@ -56,6 +56,11 @@ const loginUser = async (req, res) => {
 
         if (!user.cuentaConfirmada)
             throw new Error("Todavia no validaste tu cuenta");
+
+        if (!(await user.comparePassword(password)))
+            throw new Error("Contraseña incorrecta");
+
+        res.redirect("/");
     } catch (error) {
         console.log(error);
         res.send(error.message);
