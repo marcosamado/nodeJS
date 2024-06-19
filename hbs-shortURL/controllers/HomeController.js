@@ -58,14 +58,30 @@ const editarUrl = async (req, res) => {
     }
 };
 
+// const redireccionamiento = async (req, res) => {
+//     const { shortURL } = req.params;
+//     try {
+//         const url = await Url.findOne({ shortURL: shortURL });
+//         console.log(url);
+//         res.redirect(url.origin);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 const redireccionamiento = async (req, res) => {
     const { shortURL } = req.params;
     try {
         const url = await Url.findOne({ shortURL: shortURL });
-        // console.log(url);
-        res.redirect(url.origin);
+        if (url) {
+            // console.log(url);
+            res.redirect(url.origin);
+        } else {
+            console.log("URL not found");
+            res.status(404).send("URL not found");
+        }
     } catch (error) {
         console.log(error);
+        res.status(500).send("Server error");
     }
 };
 
